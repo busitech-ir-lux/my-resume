@@ -1,0 +1,132 @@
+{
+  "skills": [
+    {
+      "name": "Network Design",
+      "level": 70
+    },
+    {
+      "name": "Network Implementation",
+      "level": 75
+    },
+    {
+      "name": "Troubleshooting",
+      "level": 85
+    },
+    {
+      "name": "Networking Technologies",
+      "level": 70
+    },
+    {
+      "name": "Protocols",
+      "level": 80
+    },
+    {
+      "name": "Active Directory",
+      "level": 70
+    },
+    {
+      "name": "TCP/IP",
+      "level": 70
+    }
+  ],
+  "summary": "IT Support & Network Specialist with 5+ years of experience in IT operations, networking, and end-user support, including 4+ years in enterprise IT environments. Skilled in troubleshooting hardware, software, and connectivity issues, managing routers, switches, firewalls, and administering VMware environments (ESXi, vCenter, backups). Adept in Active Directory, with a strong focus on infrastructure reliability, customer support, and technical documentation.\n\n",
+  "education": [
+    {
+      "institution": "University of Technology",
+      "degree": "Bachelor of Science in Computer Networking",
+      "startDate": "2014-09-01",
+      "endDate": "2018-06-30"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Alborz University of Medical Sciences",
+      "role": "IT Support & Network Specialist",
+      "period": "4+ Years",
+      "points": [
+        "Provided first- and second-level IT support to 350+ users, troubleshooting hardware, software, and connectivity issues.",
+        "Administered and maintained network infrastructure (routers, switches, firewalls).",
+        "Supported server and storage administration (VMware ESXi, vCenter, backup).",
+        "Managed Active Directory accounts and IT assets."
+      ]
+    },
+    {
+      "company": "HIWEB (ISP)",
+      "role": "Technical Support",
+      "period": "27 Months",
+      "points": [
+        "Answered customer questions and resolved service issues in a timely manner.",
+        "Diagnosed customer issues by asking probing questions and write up repair orders.",
+        "Coordinated equipment repairs and maintenance."
+      ]
+    },
+    {
+      "role": "Customer Premises Equipment (CPE) Technician",
+      "company": " PARSONLINE (ISP)",
+      "period": "10 Months",
+      "points": [
+        "Visiting customer sites (homes or offices).",
+        "Installing and configuring modems, routers, and related equipment.",
+        "Ensuring internet connectivity and testing performance.",
+        "Educating customers on usage and troubleshooting basics."
+      ]
+    }
+  ],
+  "name": "Mahdi Hamidi",
+  "social": [
+    {
+      "label": "Whatsapp",
+      "icon": "simple-icons:whatsapp",
+      "url": "https://wa.me/989193216801"
+    },
+    {
+      "label": "Github",
+      "url": "https://github.com/busitech-ir-lux",
+      "icon": "simple-icons:github"
+    },
+    {
+      "label": "Telegram",
+      "url": "https://telegram.me/hamidimahdi92",
+      "icon": "simple-icons:telegram"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/mahdi-hamidi-3a0307163/",
+      "icon": "simple-icons:linkedin"
+    }
+  ],
+  "phone": "+352-661199277",
+  "location": "Belvaux, Luxembourg",
+  "title": "Network Specialist",
+  "languages": [
+    {
+      "name": "English",
+      "level": "Advanced"
+    },
+    {
+      "name": "Persian",
+      "level": "Native"
+    }
+  ],
+  "competencies": [
+    "Network Configuration",
+    "Firewall Management",
+    "VPN Setup",
+    "Wireless Networking",
+    "Network Security"
+  ],
+  "image": "/uploads/profile.png",
+  "certificates": [
+    {
+      "title": "CompTIA Network+",
+      "issuer": "CompTIA",
+      "year": "2020-11-20"
+    },
+    {
+      "title": "Cisco Certified Network Associate (CCNA)",
+      "issuer": "Cisco",
+      "year": "2021-05-15"
+    }
+  ],
+  "email": "info.busitech@proton.me"
+}

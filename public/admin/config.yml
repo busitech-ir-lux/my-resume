@@ -1,0 +1,74 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "resume"
+    label: "Resume"
+    files:
+      - name: "main"
+        label: "Resume Data"
+        file: "src/content/resume.json"
+        format: "json"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Profile Image", name: "image", widget: "image", required: false }
+          - { label: "Location", name: "location", widget: "string" }
+          - { label: "Summary", name: "summary", widget: "text" }
+          - label: "Social Links"
+            name: "social"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["simple-icons:linkedin","simple-icons:github","simple-icons:whatsapp","simple-icons:telegram","simple-icons:email"]
+
+          - label: "Skills"
+            name: "skills"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Level", name: "level", widget: "number" }
+
+          - label: "Experience"
+            name: "experience"
+            widget: "list"
+            fields:
+              - { label: "Company", name: "company", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Period", name: "period", widget: "string" }
+              - label: "Points"
+                name: "points"
+                widget: "list"
+                field: { label: "Point", name: "point", widget: "string" }
+          - label: "Languages"
+            name: "languages"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Language", name: "name", widget: "string" }
+              - label: "Level"
+                name: "level"
+                widget: "select"
+                options: ["Native", "Fluent", "Advanced", "Intermediate", "Basic"]
+          - label: "Certificates"
+            name: "certificates"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Issuer", name: "issuer", widget: "string" }
+              - { label: "Year", name: "year", widget: "string" }
+              - { label: "Link", name: "link", widget: "url" }

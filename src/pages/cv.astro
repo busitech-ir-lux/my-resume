@@ -1,0 +1,102 @@
+---
+import resume from "../content/resume.json";
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      window.addEventListener("load", () => window.print());
+    </script>
+    <title>{resume.name} — CV</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/cv.css" />
+    <link rel="stylesheet" href="/print.css" />
+  </head>
+
+  <body>
+    <main class="cv">
+      <div class="cv-paper">
+        <header class="cv-header">
+          <div>
+            <h1 class="cv-name">{resume.name}</h1>
+            <div class="cv-title">{resume.title}</div>
+            <div class="cv-sub">{resume.location}</div>
+          </div>
+
+          <div class="cv-meta">
+            <div><a href={`mailto:${resume.email}`}>{resume.email}</a></div>
+            {
+              resume.social?.length ? (
+                <div style="margin-top:8px; display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;">
+                  {resume.social.map((s) => (
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      class="muted"
+                      style="text-decoration:none;"
+                    >
+                      {s.label}
+                    </a>
+                  ))}
+                </div>
+              ) : null
+            }
+          </div>
+        </header>
+
+        <div class="cv-sections">
+          <section>
+            <div class="cv-section">
+              <div class="cv-h2">Summary</div>
+              <p class="cv-summary">{resume.summary}</p>
+            </div>
+
+            <div class="cv-section">
+              <div class="cv-h2">Experience</div>
+              {
+                resume.experience.map((e) => (
+                  <article class="cv-item">
+                    <div class="cv-item-head">
+                      <div class="cv-role">{e.role}</div>
+                      <div class="cv-company">
+                        {e.company} · {e.period}
+                      </div>
+                    </div>
+                    <ul class="cv-list">
+                      {e.points.map((p) => (
+                        <li>{p}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))
+              }
+            </div>
+          </section>
+
+          <aside>
+            <div class="cv-section">
+              <div class="cv-h2">Skills</div>
+              {
+                resume.skills.map((s) => (
+                  <div class="cv-skill">
+                    <div class="cv-skill-row">
+                      <span>{s.name}</span>
+                      <span class="muted">{s.level}%</span>
+                    </div>
+                    <div class="cv-bar">
+                      <div class="cv-fill" style={`width:${s.level}%`} />
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
