@@ -7,19 +7,24 @@ import resume from "../content/resume.json";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{resume.name}</title>
+
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/icons.css" />
+    <!-- icons.css is not needed if you're using Iconify; keep only if you still use it elsewhere -->
+    <!-- <link rel="stylesheet" href="/icons.css" /> -->
+
     <script src="/theme.js" defer></script>
     <script src="/skills.js" defer></script>
+
+    <!-- Iconify (for location/mail/social icons) -->
     <script
-      src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"
-    ></script>
-    <title>{resume.name}</title>
+      src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"
+      defer></script>
   </head>
 
   <body>
     <div class="page-shell">
-      <aside class="side-rail pdf-hide">
+      <aside class="side-rail pdf-hide" aria-label="Page controls">
         <label class="theme-switch" title="Toggle theme">
           <input type="checkbox" id="themeToggle" />
           <span class="slider"></span>
@@ -27,9 +32,9 @@ import resume from "../content/resume.json";
 
         <a
           class="rail-btn"
-          href="/resume.pdf"
+          href="resume.pdf"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           title="Download PDF"
         >
           PDF
@@ -37,46 +42,51 @@ import resume from "../content/resume.json";
       </aside>
 
       <main class="resume-wrap">
-        <!-- <div class="top-bar">
-          <label class="theme-switch">
-            <input type="checkbox" name="themeToggle" id="themeToggle" />
-            <span class="slider"></span>
-          </label>
-        </div>
-        <a class="btn" href="/cv" target="_blank" rel="noreferrer"
-          >Download PDF</a
-        > -->
-
+        <!-- HEADER -->
         <section class="card header">
           <div class="header-left">
             <h1>{resume.name}</h1>
-            <p>{resume.title}</p>
+            <p class="muted">{resume.title}</p>
+
             <div class="meta">
-              <div class="meta-row">
-                <iconify-icon
-                  icon="material-symbols:location-on-outline"
-                  width="20"
-                  height="20"></iconify-icon>
-                <span>{resume.location}</span>
-              </div>
-            </div>
-            <div class="meta">
-              <div class="meta-row">
-                <iconify-icon
-                  icon="material-symbols:mail-outline"
-                  width="20"
-                  height="20"></iconify-icon>
-                <a href="{`mailto:${resume.email}`}">{resume.email}</a>
-              </div>
-            </div>
-            <div class="meta">
-              <div class="meta-row">
-                <iconify-icon
-                  icon="material-symbols:settings-phone"
-                  width="20"
-                  height="20"></iconify-icon>
-                <span>{resume.phone}</span>
-              </div>
+              {
+                resume.location && (
+                  <div class="meta-row">
+                    <iconify-icon
+                      icon="material-symbols:location-on-outline"
+                      width="20"
+                      height="20"
+                    />
+                    <span>{resume.location}</span>
+                  </div>
+                )
+              }
+
+              {
+                resume.email && (
+                  <div class="meta-row">
+                    <iconify-icon
+                      icon="material-symbols:mail-outline"
+                      width="20"
+                      height="20"
+                    />
+                    <a href={`mailto:${resume.email}`}>{resume.email}</a>
+                  </div>
+                )
+              }
+
+              {
+                resume.phone && (
+                  <div class="meta-row">
+                    <iconify-icon
+                      icon="material-symbols:call-outline"
+                      width="20"
+                      height="20"
+                    />
+                    <a href={`tel:${resume.phone.replace(/\s+/g,"")}`}>{resume.phone}</a>
+                  </div>
+                )
+              }
             </div>
           </div>
 
@@ -91,14 +101,14 @@ import resume from "../content/resume.json";
 
             {
               resume.social?.length ? (
-                <div class="social-vert">
+                <div class="social-vert" aria-label="Social links">
                   {resume.social.map((s) => (
                     <a
                       class="social-icon"
                       data-icon={s.icon}
                       href={s.url}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       aria-label={s.label || s.icon}
                       title={s.label || s.icon}
                     >
@@ -111,20 +121,30 @@ import resume from "../content/resume.json";
           </div>
         </section>
 
-        <section class="card justify">
+        <!-- SUMMARY -->
+        <section class="card">
           <h2>Summary</h2>
           <p>{resume.summary}</p>
         </section>
+
+        <!-- TWO COLUMN: EXPERIENCE + RIGHT PANE -->
         <div class="grid-2">
+          <!-- Experience -->
           <section class="card">
             <h2>Experience</h2>
+
             {
-              resume.experience.map((exp) => (
-                <div class="card">
-                  <strong>{exp.role}</strong> — <i>{exp.company}</i>
-                  <div class="muted">{exp.period}</div>
+              resume.experience?.map((exp) => (
+                <div class="item card">
+                  <div class="item-head">
+                    <strong>{exp.role}</strong>
+                    <span class="muted">
+                      {exp.company} · {exp.period}
+                    </span>
+                  </div>
+
                   <ul>
-                    {exp.points.map((p) => (
+                    {exp.points?.map((p) => (
                       <li>{p}</li>
                     ))}
                   </ul>
@@ -132,11 +152,15 @@ import resume from "../content/resume.json";
               ))
             }
           </section>
+
+          <!-- Right pane (boxed cards) -->
           <div class="right-pane">
-            <section class="skills card right-box">
+            {/* Skills box */}
+            <section class="card right-box">
               <h2>Skills</h2>
+
               {
-                resume.skills.map((skill) => (
+                resume.skills?.map((skill) => (
                   <div class="skill">
                     <div class="skill-header">
                       <span>{skill.name}</span>
@@ -149,52 +173,47 @@ import resume from "../content/resume.json";
                 ))
               }
             </section>
-            <section class="card language">
-              {
-                resume.languages?.length && (
-                  <section class="right-box">
-                    <h2>Languages</h2>
-                    <ul>
-                      {resume.languages.map((l) => (
-                        <li>
-                          <strong>{l.name}</strong>
-                          <span class="muted"> — {l.level}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                )
-              }
-            </section>
-            <section class="card certificates">
-              {
-                resume.certificates?.length && (
-                  <section class="right-box">
-                    <h2>Certificates</h2>
-                    <ul>
-                      {resume.certificates.map((c) => (
-                        <li>
-                          <strong>{c.title}</strong>
-                          <br />
-                          <span class="muted">
-                            {c.issuer}, <i>{c.year}</i>
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                )
-              }
-            </section>
+
+            {/* Languages box */}
+            {
+              resume.languages?.length ? (
+                <section class="card right-box">
+                  <h2>Languages</h2>
+                  <ul>
+                    {resume.languages.map((l) => (
+                      <li>
+                        <strong>{l.name}</strong>
+                        <span class="muted"> — {l.level}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null
+            }
+
+            {/* Certificates box */}
+            {
+              resume.certificates?.length ? (
+                <section class="card right-box">
+                  <h2>Certificates</h2>
+                  <ul>
+                    {resume.certificates.map((c) => (
+                      <li>
+                        <strong>{c.title}</strong>
+                        <br />
+                        <span class="muted">
+                          {c.issuer}
+                          {c.year ? `, ${c.year}` : ""}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null
+            }
           </div>
         </div>
       </main>
     </div>
-
-    <script src="/theme.js" defer></script>
-    <script src="/skills.js" defer></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"
-    ></script>
   </body>
 </html>

@@ -396,3 +396,7 @@ input:checked + .slider::before {
 .justify {
   font-size: larger;
 }
+
+/* .item { padding: 12px 0; border-bottom: 1px solid var(--border); }
+.item:last-child { border-bottom: none; }
+.item-head { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom: 6px; } */
