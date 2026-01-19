@@ -75,9 +75,9 @@
   "name": "Mahdi Hamidi",
   "social": [
     {
-      "label": "Whatsapp",
-      "icon": "simple-icons:whatsapp",
-      "url": "https://wa.me/989193216801"
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/mahdi-hamidi-3a0307163/",
+      "icon": "simple-icons:linkedin"
     },
     {
       "label": "Github",
@@ -85,14 +85,14 @@
       "icon": "simple-icons:github"
     },
     {
+      "label": "Whatsapp",
+      "icon": "simple-icons:whatsapp",
+      "url": "https://wa.me/989193216801"
+    },
+    {
       "label": "Telegram",
       "url": "https://telegram.me/hamidimahdi92",
       "icon": "simple-icons:telegram"
-    },
-    {
-      "label": "LinkedIn",
-      "url": "https://www.linkedin.com/in/mahdi-hamidi-3a0307163/",
-      "icon": "simple-icons:linkedin"
     }
   ],
   "phone": "+352661199277",
