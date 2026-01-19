@@ -1,3 +1,5 @@
+# dist ignore
+dist/
 # generated types
 .astro/
 
