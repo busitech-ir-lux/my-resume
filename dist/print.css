@@ -1,0 +1,95 @@
+/* CV page layout */
+.cv {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.cv-header {
+  padding: 16px 0 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.cv-name {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.cv-sub {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+}
+
+.cv-section {
+  margin-top: 16px;
+}
+
+.cv-section h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.cv-item {
+  margin-top: 10px;
+}
+
+.cv-item-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.cv-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+/* PRINT SETTINGS */
+@media print {
+  /* remove shadows/cards from styles.css */
+  .card {
+    box-shadow: none !important;
+  }
+
+  /* page setup */
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  /* prevent weird breaks */
+  h2,
+  h3,
+  .cv-item {
+    break-inside: avoid;
+  }
+}
+@media print {
+  .cv-paper {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+  }
+
+  .cv {
+    padding: 0 !important;
+  }
+
+  /* keep sections clean on page breaks */
+  .cv-item {
+    break-inside: avoid;
+  }
+}

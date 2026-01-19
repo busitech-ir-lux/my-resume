@@ -1,0 +1,406 @@
+:root {
+  /* LIGHT */
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --muted: #6b7280; /* FIX: was missing */
+  --border: #e5e7eb;
+  --primary: #6366f1;
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --radius: 14px;
+}
+
+[data-theme="dark"] {
+  /* DARK */
+  --bg: #0b0f19;
+  --surface: #111827;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --muted: #9ca3af; /* FIX: keep muted consistent */
+  --border: #1f2937;
+  --primary: #818cf8;
+
+  --shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0; /* FIX */
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout shell */
+.page-shell {
+  max-width: 960px; /* FIX: make it truly wider */
+  margin: 50px auto;
+  padding: 22px 16px;
+}
+
+/* Main resume column */
+.resume-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Remove conflicting max-width rules */
+main {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+/* Typography */
+h1 {
+  font-size: 2.4rem;
+  margin: 0 0 0.2rem;
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+}
+
+p {
+  line-height: 1.6;
+  margin: 0.4rem 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.right-pane section + section {
+  margin-top: 5px; /* FIX: was too large */
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 25px; /* FIX: slightly better spacing */
+  margin-top: 10px;
+}
+
+/* Side rail (overlay) */
+.side-rail {
+  position: fixed;
+  right: 18px; /* FIX: deterministic placement */
+  top: 18px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+
+  z-index: 100;
+}
+
+.rail-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow);
+}
+
+.rail-btn:hover {
+  transform: translateY(-1px);
+  transition: 140ms;
+}
+
+/* Skills */
+.skill {
+  margin-bottom: 14px;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.skill-bar {
+  height: 10px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  width: 0;
+  height: 100%;
+  background: var(--primary);
+  border-radius: 999px;
+  transition: width 1s ease;
+}
+
+/* Theme switch */
+.theme-switch {
+  position: relative;
+  width: 52px;
+  height: 28px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  top: 3px;
+  background: var(--surface);
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: var(--shadow);
+}
+
+input:checked + .slider {
+  background: var(--primary);
+}
+
+input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+/* Header + avatar */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.avatar-wrap {
+  flex: 0 0 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 900px) {
+  .avatar-wrap {
+    flex-basis: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .avatar-wrap {
+    margin-bottom: 12px;
+  }
+}
+
+/* Social beside avatar */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-vert {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--brand, var(--text-primary));
+  background: color-mix(in srgb, var(--brand, transparent) 14%, transparent);
+}
+
+.social-icon:hover {
+  transform: translateY(-1px);
+  transition: 140ms;
+}
+
+.social-icon[data-icon*="linkedin"] {
+  --brand: #0a66c2;
+}
+.social-icon[data-icon*="github"] {
+  --brand: #6e7681;
+}
+.social-icon[data-icon*="whatsapp"] {
+  --brand: #25d366;
+}
+.social-icon[data-icon*="telegram"] {
+  --brand: #229ed9;
+}
+.social-icon[data-icon*="mail"] {
+  --brand: var(--primary);
+}
+
+@media (max-width: 640px) {
+  .header-right {
+    flex-direction: column;
+  }
+  .social-vert {
+    flex-direction: row;
+  }
+  .meta {
+    justify-items: center;
+    text-align: center;
+  }
+  .meta-row {
+    justify-content: center;
+  }
+}
+
+/* Buttons (if used in content area) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  transition: 140ms;
+}
+
+/* Two-column area (Experience left, right pane right) */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 18px; /* FIX: was too small */
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Right pane: separate boxed cards */
+.right-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* FIX: 5px looked cramped */
+}
+
+/* Meta rows with icons */
+.meta {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.meta-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+}
+
+.meta-row a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+}
+.meta-row a:hover {
+  border-bottom-color: var(--text-secondary);
+}
+
+.meta-row iconify-icon {
+  color: var(--text-secondary);
+}
+
+/* Print (full-bleed background handled by PDF generator margins = 0) */
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .pdf-hide {
+    display: none !important;
+  }
+}
+
+/* Mobile rail becomes bottom bar */
+@media (max-width: 720px) {
+  .side-rail {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 14px;
+    top: auto;
+
+    padding: 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+}
+
+.justify {
+  font-size: larger;
+}
+
