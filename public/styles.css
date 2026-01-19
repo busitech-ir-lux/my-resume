@@ -44,8 +44,8 @@ body {
 
 /* Layout shell */
 .page-shell {
-  max-width: 1280px; /* FIX: make it truly wider */
-  margin: 0 auto;
+  max-width: 960px; /* FIX: make it truly wider */
+  margin: 50px auto;
   padding: 22px 16px;
 }
 
@@ -82,8 +82,8 @@ p {
   color: var(--muted);
 }
 
-section + section {
-  margin-top: 24px;
+.right-pane section + section {
+  margin-top: 5px; /* FIX: was too large */
 }
 
 /* Cards */
@@ -92,7 +92,7 @@ section + section {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 18px; /* FIX: slightly better spacing */
+  padding: 20px 25px; /* FIX: slightly better spacing */
   margin-top: 10px;
 }
 
@@ -296,6 +296,13 @@ input:checked + .slider::before {
   .social-vert {
     flex-direction: row;
   }
+  .meta {
+    justify-items: center;
+    text-align: center;
+  }
+  .meta-row {
+    justify-content: center;
+  }
 }
 
 /* Buttons (if used in content area) */
@@ -334,7 +341,7 @@ input:checked + .slider::before {
 .right-pane {
   display: flex;
   flex-direction: column;
-  gap: 18px; /* FIX: 5px looked cramped */
+  gap: 5px; /* FIX: 5px looked cramped */
 }
 
 /* Meta rows with icons */
@@ -397,6 +404,3 @@ input:checked + .slider::before {
   font-size: larger;
 }
 
-/* .item { padding: 12px 0; border-bottom: 1px solid var(--border); }
-.item:last-child { border-bottom: none; }
-.item-head { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom: 6px; } */
