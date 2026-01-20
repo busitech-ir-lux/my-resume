@@ -2,35 +2,43 @@
   "skills": [
     {
       "name": "Troubleshooting",
-      "level": 85
+      "level": 85,
+      "tags": ["IT Support", "Customer Service"]
     },
     {
       "name": "TCP/IP",
-      "level": 70
+      "level": 70,
+      "tags": ["IT Support", "Customer Service"]
     },
     {
       "name": "Protocols",
-      "level": 80
+      "level": 80,
+      "tags": ["IT Support", "Customer Service"]
     },
     {
       "name": "Active Directory",
-      "level": 70
+      "level": 70,
+      "tags": ["IT Support", "Customer Service"]
     },
     {
       "name": "Networking Technologies",
-      "level": 70
+      "level": 70,
+      "tags": ["IT Support", "Customer Service"]
     },
     {
       "name": "Helpdesk",
-      "level": 85
+      "level": 85,
+      "tags": ["IT Support", "Customer Service"]
     },
     {
       "name": "Network Implementation",
-      "level": 75
+      "level": 75,
+      "tags": ["IT Support", "Customer Service"]
     },
     {
       "name": "Azure",
-      "level": 10
+      "level": 10,
+      "tags": ["IT Support", "Customer Service"]
     }
   ],
   "summary": "IT Support & Network Specialist with 5+ years of experience in IT operations, networking, and end-user support, including 4+ years in enterprise IT environments. Skilled in troubleshooting hardware, software, and connectivity issues, managing routers, switches, firewalls, and administering VMware environments (ESXi, vCenter, backups). Adept in Active Directory, with a strong focus on infrastructure reliability, customer support, and technical documentation.\n\n",

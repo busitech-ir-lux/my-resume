@@ -14,7 +14,7 @@ import resume from "../content/resume.json";
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-     <link
+    <link
       href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
@@ -142,29 +142,73 @@ import resume from "../content/resume.json";
         <!-- TWO COLUMN: EXPERIENCE + RIGHT PANE -->
         <div class="grid-2">
           <!-- Experience -->
-          <section class="card">
-            <h2>Experience</h2>
+          <div class="left-pane">
+            <section class="card">
+              <h2>Experience</h2>
 
-            {
-              resume.experience?.map((exp) => (
-                <div class="item card">
-                  <div class="item-head">
-                    <strong>{exp.role}</strong>
-                    <br/>
-                    <span class="muted italic">
-                      {exp.company} · {exp.period}
-                    </span>
+              {
+                resume.experience?.map((exp) => (
+                  <div class="item card">
+                    <div class="item-head">
+                      <strong>{exp.role}</strong>
+                      <br />
+                      <span class="muted italic">
+                        {exp.company} · {exp.period}
+                      </span>
+                    </div>
+
+                    <ul>
+                      {exp.points?.map((p) => (
+                        <li>{p}</li>
+                      ))}
+                    </ul>
                   </div>
-
-                  <ul>
-                    {exp.points?.map((p) => (
-                      <li>{p}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))
-            }
-          </section>
+                ))
+              }
+            </section>
+            <section>
+              {/* Certificates box */}
+              {
+                resume.certificates?.length ? (
+                  <section class="card right-box">
+                    <h2>Certificates</h2>
+                    <ul>
+                      {resume.certificates.map((c) => (
+                        <li class="cert-item">
+                          <div class="cert-row">
+                            <div>
+                              <strong>- {c.title}</strong>
+                              <br />
+                              <span class="muted">
+                                {c.issuer}
+                                {c.year ? `, ${c.year}` : ""}
+                              </span>
+                            </div>
+                            {c.link && (
+                              <a
+                                href={c.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="cert-icon"
+                                title="View certificate"
+                                aria-label="View certificate"
+                              >
+                                <iconify-icon
+                                  icon="material-symbols:visibility-outline"
+                                  width="18"
+                                  height="18"
+                                />
+                              </a>
+                            )}{" "}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ) : null
+              }
+            </section>
+          </div>
 
           <!-- Right pane (boxed cards) -->
           <div class="right-pane">
@@ -172,21 +216,41 @@ import resume from "../content/resume.json";
             <section class="card right-box">
               <h2>Skills</h2>
 
+              <input
+                id="skillSearch"
+                class="skill-search"
+                type="search"
+                placeholder="Search skills or tags..."
+                autocomplete="off"
+              />
+
               {
                 resume.skills?.map((skill) => (
-                  <div class="skill">
+                  <div
+                    class="skill"
+                    data-name={skill.name.toLowerCase()}
+                    data-tags={(skill.tags || []).join(" ").toLowerCase()}
+                  >
                     <div class="skill-header">
                       <span>{skill.name}</span>
                       <span class="muted">{skill.level}%</span>
                     </div>
+
                     <div class="skill-bar">
                       <div class="skill-fill" data-level={skill.level} />
                     </div>
+
+                    {skill.tags?.length ? (
+                      <div class="skill-tags">
+                        {skill.tags.map((t) => (
+                          <span class="tag">{t}</span>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
                 ))
               }
             </section>
-
             {/* Languages box */}
             {
               resume.languages?.length ? (
@@ -197,47 +261,6 @@ import resume from "../content/resume.json";
                       <li>
                         <strong>{l.name}</strong>
                         <span class="muted"> — {l.level}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ) : null
-            }
-
-            {/* Certificates box */}
-            {
-              resume.certificates?.length ? (
-                <section class="card right-box">
-                  <h2>Certificates</h2>
-                  <ul>
-                    {resume.certificates.map((c) => (
-                      <li class="cert-item">
-                        <div class="cert-row">
-                          <div>
-                            <strong>{c.title}</strong>
-                            <br />
-                            <span class="muted">
-                              {c.issuer}
-                              {c.year ? `, ${c.year}` : ""}
-                            </span>
-                          </div>
-                          {c.link && (
-                            <a
-                              href={c.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              class="cert-icon"
-                              title="View certificate"
-                              aria-label="View certificate"
-                            >
-                              <iconify-icon
-                                icon="material-symbols:open-in-new"
-                                width="18"
-                                height="18"
-                              />
-                            </a>
-                          )}{" "}
-                        </div>
                       </li>
                     ))}
                   </ul>
