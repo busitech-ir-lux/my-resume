@@ -1,19 +1,11 @@
 {
   "skills": [
     {
-      "name": "Network Design",
-      "level": 70
-    },
-    {
-      "name": "Network Implementation",
-      "level": 75
-    },
-    {
       "name": "Troubleshooting",
       "level": 85
     },
     {
-      "name": "Networking Technologies",
+      "name": "TCP/IP",
       "level": 70
     },
     {
@@ -25,8 +17,20 @@
       "level": 70
     },
     {
-      "name": "TCP/IP",
+      "name": "Networking Technologies",
       "level": 70
+    },
+    {
+      "name": "Helpdesk",
+      "level": 85
+    },
+    {
+      "name": "Network Implementation",
+      "level": 75
+    },
+    {
+      "name": "Azure",
+      "level": 10
     }
   ],
   "summary": "IT Support & Network Specialist with 5+ years of experience in IT operations, networking, and end-user support, including 4+ years in enterprise IT environments. Skilled in troubleshooting hardware, software, and connectivity issues, managing routers, switches, firewalls, and administering VMware environments (ESXi, vCenter, backups). Adept in Active Directory, with a strong focus on infrastructure reliability, customer support, and technical documentation.\n\n",
@@ -101,11 +105,15 @@
   "languages": [
     {
       "name": "English",
-      "level": "Advanced"
+      "level": "Upper-Intermediate"
     },
     {
       "name": "Persian",
       "level": "Native"
+    },
+    {
+      "name": "French",
+      "level": "Basic"
     }
   ],
   "competencies": [
@@ -119,13 +127,21 @@
   "certificates": [
     {
       "title": "CompTIA Network+",
-      "issuer": "CompTIA",
-      "year": "2020-11-20"
+      "issuer": "Rayancollege",
+      "year": "2018",
+      "link": "https://drive.google.com/file/d/1TlHoATQ6MsdF3HJV5kywQE4WVT6hBpgB/view?usp=sharing"
     },
     {
-      "title": "Cisco Certified Network Associate (CCNA)",
-      "issuer": "Cisco",
-      "year": "2021-05-15"
+      "title": "Cisco Certified Network Associate (CCNA 200-125)",
+      "issuer": "Rayancollege",
+      "year": "2018",
+      "link": "https://drive.google.com/file/d/1TpHFXlAoZuB56ZWF-VMTJvD2gf-aHTKA/view?usp=sharing"
+    },
+    {
+      "title": "Cybersecurity for everyone",
+      "issuer": "Univerity of Maryland",
+      "year": "2025",
+      "link": "https://coursera.org/share/36d599579045d88a7c4249838d492f66"
     }
   ],
   "email": "info.busitech@proton.me"

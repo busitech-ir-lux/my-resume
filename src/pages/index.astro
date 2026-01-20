@@ -8,6 +8,16 @@ import resume from "../content/resume.json";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{resume.name}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+     <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="/styles.css" />
     <!-- icons.css is not needed if you're using Iconify; keep only if you still use it elsewhere -->
@@ -83,7 +93,9 @@ import resume from "../content/resume.json";
                       width="20"
                       height="20"
                     />
-                    <a href={`tel:${resume.phone.replace(/\s+/g,"")}`}>{resume.phone}</a>
+                    <a href={`tel:${resume.phone.replace(/\s+/g, "")}`}>
+                      {resume.phone}
+                    </a>
                   </div>
                 )
               }
@@ -138,7 +150,8 @@ import resume from "../content/resume.json";
                 <div class="item card">
                   <div class="item-head">
                     <strong>{exp.role}</strong>
-                    <span class="muted">
+                    <br/>
+                    <span class="muted italic">
                       {exp.company} · {exp.period}
                     </span>
                   </div>
@@ -198,13 +211,33 @@ import resume from "../content/resume.json";
                   <h2>Certificates</h2>
                   <ul>
                     {resume.certificates.map((c) => (
-                      <li>
-                        <strong>{c.title}</strong>
-                        <br />
-                        <span class="muted">
-                          {c.issuer}
-                          {c.year ? `, ${c.year}` : ""}
-                        </span>
+                      <li class="cert-item">
+                        <div class="cert-row">
+                          <div>
+                            <strong>{c.title}</strong>
+                            <br />
+                            <span class="muted">
+                              {c.issuer}
+                              {c.year ? `, ${c.year}` : ""}
+                            </span>
+                          </div>
+                          {c.link && (
+                            <a
+                              href={c.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="cert-icon"
+                              title="View certificate"
+                              aria-label="View certificate"
+                            >
+                              <iconify-icon
+                                icon="material-symbols:open-in-new"
+                                width="18"
+                                height="18"
+                              />
+                            </a>
+                          )}{" "}
+                        </div>
                       </li>
                     ))}
                   </ul>

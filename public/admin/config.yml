@@ -70,5 +70,5 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Issuer", name: "issuer", widget: "string" }
-              - { label: "Year", name: "year", widget: "string" }
-              - { label: "Link", name: "link", widget: "url" }
+              - { label: "Year", name: "year", widget: "string", required: false }
+              - { label: "Link", name: "link", widget: "string", required: false }
