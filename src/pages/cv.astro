@@ -3,100 +3,241 @@ import resume from "../content/resume.json";
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script>
-      window.addEventListener("load", () => window.print());
-    </script>
     <title>{resume.name} — CV</title>
-    <link rel="stylesheet" href="/styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="/cv.css" />
-    <link rel="stylesheet" href="/print.css" />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"
+      defer></script>
   </head>
 
   <body>
-    <main class="cv">
-      <div class="cv-paper">
-        <header class="cv-header">
-          <div>
-            <h1 class="cv-name">{resume.name}</h1>
-            <div class="cv-title">{resume.title}</div>
-            <div class="cv-sub">{resume.location}</div>
+    <div class="page-shell">
+      <main class="resume-wrap">
+        <!-- HEADER -->
+        <section class="card header">
+          <div class="header-left">
+            <h1 class="name">{resume.name}</h1>
+            <div class="title muted">{resume.title}</div>
           </div>
 
-          <div class="cv-meta">
-            <div><a href={`mailto:${resume.email}`}>{resume.email}</a></div>
+          <div class="header-middle">
+            <div class="meta">
+              {
+                resume.location && (
+                  <div class="meta-row">
+                    <iconify-icon
+                      icon="material-symbols:location-on-outline"
+                      width="16"
+                      height="16"
+                    />
+                    <span>{resume.location}</span>
+                  </div>
+                )
+              }
+
+              {
+                resume.email && (
+                  <div class="meta-row">
+                    <iconify-icon
+                      icon="material-symbols:mail-outline"
+                      width="16"
+                      height="16"
+                    />
+                    <a href={`mailto:${resume.email}`}>{resume.email}</a>
+                  </div>
+                )
+              }
+
+              {
+                resume.phone && (
+                  <div class="meta-row">
+                    <iconify-icon
+                      icon="material-symbols:call-outline"
+                      width="16"
+                      height="16"
+                    />
+                    <a href={`tel:${resume.phone.replace(/\s+/g, "")}`}>
+                      {resume.phone}
+                    </a>
+                  </div>
+                )
+              }
+            </div>
+          </div>
+
+          <div class="header-right">
+            {
+              resume.image && (
+                <div class="avatar-wrap">
+                  <img src={resume.image} class="avatar" alt={resume.name} />
+                </div>
+              )
+            }
+
             {
               resume.social?.length ? (
-                <div style="margin-top:8px; display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;">
+                <div class="social-vert" aria-label="Social links">
                   {resume.social.map((s) => (
                     <a
+                      class="social-icon"
+                      data-icon={s.icon}
                       href={s.url}
                       target="_blank"
-                      rel="noreferrer"
-                      class="muted"
-                      style="text-decoration:none;"
+                      rel="noopener noreferrer"
+                      aria-label={s.label || s.icon}
+                      title={s.label || s.icon}
                     >
-                      {s.label}
+                      <iconify-icon icon={s.icon} width="14" height="14" />
                     </a>
                   ))}
                 </div>
               ) : null
             }
           </div>
-        </header>
+        </section>
 
-        <div class="cv-sections">
-          <section>
-            <div class="cv-section">
-              <div class="cv-h2">Summary</div>
-              <p class="cv-summary">{resume.summary}</p>
-            </div>
+        <!-- SUMMARY -->
+        <section class="card">
+          <h2>Summary</h2>
+          <p class="body">{resume.summary}</p>
+        </section>
 
-            <div class="cv-section">
-              <div class="cv-h2">Experience</div>
+        <!-- TWO COLUMN -->
+        <div class="grid-2">
+          <!-- Left -->
+          <div class="left-pane">
+            <section class="card">
+              <h2>Experience</h2>
+
               {
-                resume.experience.map((e) => (
-                  <article class="cv-item">
-                    <div class="cv-item-head">
-                      <div class="cv-role">{e.role}</div>
-                      <div class="cv-company">
-                        {e.company} · {e.period}
+                resume.experience?.map((exp) => (
+                  <div class="item card">
+                    <div class="item-head">
+                      <strong>{exp.role}</strong>
+                      <div class="muted italic">
+                        {exp.company} · {exp.period}
                       </div>
                     </div>
-                    <ul class="cv-list">
-                      {e.points.map((p) => (
+
+                    <ul class="list">
+                      {exp.points?.map((p) => (
                         <li>{p}</li>
                       ))}
                     </ul>
-                  </article>
+                  </div>
                 ))
               }
-            </div>
-          </section>
-
-          <aside>
-            <div class="cv-section">
-              <div class="cv-h2">Skills</div>
+            </section>
+            <section class="card">
+              <h2>Education</h2>           
               {
-                resume.skills.map((s) => (
-                  <div class="cv-skill">
-                    <div class="cv-skill-row">
-                      <span>{s.name}</span>
-                      <span class="muted">{s.level}%</span>
-                    </div>
-                    <div class="cv-bar">
-                      <div class="cv-fill" style={`width:${s.level}%`} />
+                resume.education?.map((edu) => (
+                  <div class="item card">
+                    <div class="item-head">
+                      <strong>{edu.degree}</strong>
+                      <br />
+                      <span class="muted italic">
+                        {edu.institution} <strong>({edu.startDate} - {edu.endDate})</strong>
+                      </span>
                     </div>
                   </div>
                 ))
               }
-            </div>
-          </aside>
+            </section>
+          </div>
+
+          <!-- Right -->
+          <div class="right-pane">
+            <section class="card right-box">
+              <h2>Skills</h2>
+
+              {
+                resume.skills?.map((skill) => (
+                  <div class="skill">
+                    <div class="skill-header">
+                      <span>{skill.name}</span>
+                      <span class="muted">{skill.level}%</span>
+                    </div>
+
+                    <div class="skill-bar">
+                      <div class="skill-fill" style={`width:${skill.level}%`} />
+                    </div>
+                  </div>
+                ))
+              }
+            </section>
+
+            {
+              resume.languages?.length ? (
+                <section class="card right-box">
+                  <h2>Languages</h2>
+                  <ul class="list">
+                    {resume.languages.map((l) => (
+                      <li>
+                        <strong>{l.name}</strong>
+                        <span class="muted"> — {l.level}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null
+            }
+
+            {
+              resume.certificates?.length ? (
+                <section class="card right-box">
+                  <h2>Certificates</h2>
+                  <ul class="list">
+                    {resume.certificates.map((c) => (
+                      <li class="cert-item card">
+                        <div class="cert-row">
+                          <div>
+                            <strong>{c.title}</strong>
+                            <div class="muted">
+                              {c.issuer}
+                              {c.year ? `, ${c.year}` : ""}
+                            </div>
+                          </div>
+
+                          {c.link && (
+                            <a
+                              href={c.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="cert-icon"
+                              title="View certificate"
+                              aria-label="View certificate"
+                            >
+                              <iconify-icon
+                                icon="material-symbols:visibility-outline"
+                                width="16"
+                                height="16"
+                              />
+                            </a>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null
+            }
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   </body>
 </html>

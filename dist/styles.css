@@ -372,7 +372,7 @@ input:checked + .slider::before {
 /* Two-column area (Experience left, right pane right) */
 .grid-2 {
   display: grid;
-  grid-template-columns: 1.18fr 0.82fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 18px; /* FIX: was too small */
   align-items: start;
 }
@@ -415,18 +415,6 @@ input:checked + .slider::before {
 
 .meta-row iconify-icon {
   color: var(--text-secondary);
-}
-
-/* Print (full-bleed background handled by PDF generator margins = 0) */
-@media print {
-  html,
-  body {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .pdf-hide {
-    display: none !important;
-  }
 }
 
 /* Mobile rail becomes bottom bar */
@@ -488,5 +476,159 @@ input:checked + .slider::before {
   }
   h2 {
     font-size: 1.25rem;
+  }
+}
+
+.page-break {
+  break-before: page;
+  page-break-before: always;
+}
+
+/* Print (full-bleed background handled by PDF generator margins = 0) */
+@media print {
+  @page {
+    size: A4;
+    margin: 8mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  /* Hide UI-only controls + interactive skills UI */
+  .pdf-hide,
+  .side-rail,
+  .skill-search,
+  .skill-tags,
+  .tag {
+    display: none !important;
+  }
+  .page-shell {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  /* Keep boxing but simplify shadows for print */
+  .card {
+    border: 1px solid #d9d9d9 !important;
+    background: #fff !important;
+    padding: 14px 16px !important;
+    margin-top: 10px !important;
+    box-shadow: none !important;
+    border-radius: 12px !important;
+  }
+
+  /* --- Header print layout without changing HTML --- */
+  /* Make header a 3-column grid in print */
+  .header {
+    display: grid !important;
+    grid-template-columns: 1fr 2fr auto !important;
+    gap: 14px !important;
+    align-items: center !important;
+  }
+
+  /* Place header-left (name/title) in column 1 */
+  .header-left {
+    grid-column: 1 !important;
+  }
+
+  /* Move meta block to the middle column (col 2) in print */
+  .header-left .meta {
+    grid-column: 2 !important;
+  }
+
+  /* But since meta is inside header-left in your HTML, we visually pull it out:
+     - turn header-left into a grid with two columns (name/title | meta) */
+  .header-left {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 12px !important;
+    align-items: start !important;
+  }
+
+  .header-left h1,
+  .header-left p.muted {
+    grid-column: 1 !important;
+  }
+
+  /* All meta blocks go to the right side of header-left in print */
+  .header-left .meta {
+    grid-column: 2 !important;
+    margin-top: 0 !important;
+  }
+
+  /* Tighten meta spacing in print */
+  .meta {
+    gap: 6px !important;
+  }
+  .meta-row {
+    gap: 8px !important;
+  }
+
+  /* Avatar bigger with shadow in print */
+  .avatar-wrap {
+    flex: 0 0 140px !important;
+    height: 140px !important;
+  }
+  .avatar {
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18) !important;
+    border: 1px solid #cfcfcf !important;
+  }
+
+  /* Social icons smaller in print (keep them) */
+  .social-icon {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  /* .social-icon iconify-icon {
+    width: 16px !important;
+    height: 16px !important;
+  } */
+  .social-vert {
+    gap: 8px !important;
+  }
+
+  /* --- Main grid stability in print --- */
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1.5fr 0.5fr !important;
+    gap: 10px !important;
+    align-items: start !important;
+  }
+
+  /* Avoid ugly splits */
+  .item,
+  .skill,
+  .cert-item,
+  .cert-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Compact typography for print */
+  h1 {
+    font-size: 22px !important;
+  }
+  h2 {
+    font-size: 13.5px !important;
+    margin-bottom: 6px !important;
+  }
+  p {
+    line-height: 1.35 !important;
+    margin: 0.35rem 0 !important;
+  }
+  li {
+    margin-bottom: 3px !important;
+  }
+
+  /* Make skill bars thinner */
+  .skill {
+    margin-bottom: 10px !important;
+  }
+  .skill-bar {
+    /* height: 7px !important; */
+    display: none !important;
   }
 }

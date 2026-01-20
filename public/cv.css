@@ -1,164 +1,309 @@
-/* Modern CV screen styling (still prints clean via print.css) */
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #6366f1;
 
-.cv {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 28px 18px;
+  --radius: 12px;
+  --shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
 }
 
-.cv-paper {
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+
+  /* CV base size (screen) */
+  font-size: 14px;
+}
+
+.page-shell {
+  max-width: 960px;
+  margin: 10px auto;
+  padding: 10px 12px;
+}
+
+.resume-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 30px;
+  padding: 14px 20px;
+  margin-top: 10px;
 }
 
-.cv-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 18px;
-  align-items: start;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border);
-}
-
-.cv-name {
+h1,
+h2 {
   margin: 0;
-  font-size: 2.2rem;
-  letter-spacing: -0.03em;
+}
+h2 {
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+.name {
+  font-size: 22px;
+  letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
-.cv-title {
-  margin: 8px 0 0;
-  font-weight: 600;
-  color: var(--text-primary);
+.title {
+  margin-top: 6px;
+  font-weight: 500;
 }
 
-.cv-sub {
-  margin: 6px 0 0;
-  color: var(--text-secondary);
+.body {
+  line-height: 1.45;
+  margin: 0;
 }
 
-.cv-meta {
-  text-align: right;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
+.muted {
+  color: var(--muted);
+}
+.italic {
+  font-style: italic;
 }
 
-.cv-meta a {
+.header {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.header-middle {
+  display: flex;
+  justify-content: center;
+}
+
+.meta {
+  display: grid;
+  gap: 6px;
+}
+
+.meta-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.meta-row a {
   color: inherit;
   text-decoration: none;
   border-bottom: 1px dashed transparent;
 }
-.cv-meta a:hover {
-  border-bottom-color: var(--text-secondary);
+.meta-row a:hover {
+  border-bottom-color: var(--muted);
 }
 
-.cv-sections {
+.avatar-wrap {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.14);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-vert {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--brand, var(--text));
+  background: color-mix(in srgb, var(--brand, transparent) 12%, transparent);
+}
+
+.social-icon[data-icon*="linkedin"] {
+  --brand: #0a66c2;
+}
+.social-icon[data-icon*="github"] {
+  --brand: #6e7681;
+}
+.social-icon[data-icon*="whatsapp"] {
+  --brand: #25d366;
+}
+.social-icon[data-icon*="telegram"] {
+  --brand: #229ed9;
+}
+.social-icon[data-icon*="mail"] {
+  --brand: var(--primary);
+}
+
+.grid-2 {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 24px;
-  margin-top: 18px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 10px;
+  align-items: start;
 }
 
-.cv-section {
-  margin-top: 18px;
+.right-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.cv-section:first-child {
+.right-box {
+  font-size: 13px;
+}
+
+.item {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  margin-top: 10px;
+}
+.item:first-child {
+  border-top: 0;
+  padding-top: 0;
   margin-top: 0;
 }
 
-.cv-h2 {
-  margin: 0 0 10px;
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
+.item-head strong {
+  font-size: 13.5px;
 }
 
-.cv-summary {
-  margin: 0;
-  color: var(--text-primary);
-  line-height: 1.7;
+.list {
+  margin: 8px 0 0 18px;
+  padding: 0;
+}
+.list li {
+  margin: 0 0 3px 0;
 }
 
-.cv-skill {
-  margin-bottom: 12px;
+.skill {
+  margin-bottom: 10px;
 }
-
-.cv-skill-row {
+.skill-header {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  font-size: 0.95rem;
+  font-size: 12.8px;
+  margin-bottom: 4px;
 }
-
-.cv-skill-row .muted {
-  color: var(--text-secondary);
-}
-
-.cv-bar {
-  margin-top: 6px;
-  height: 10px;
-  background: color-mix(in srgb, var(--border) 70%, transparent);
+.skill-bar {
+  height: 7px;
+  background: var(--border);
   border-radius: 999px;
   overflow: hidden;
 }
-
-.cv-fill {
+.skill-fill {
   height: 100%;
   background: var(--primary);
   border-radius: 999px;
 }
 
-.cv-item {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
+.cert-item {
+  list-style: none;
 }
-.cv-item:last-child {
-  border-bottom: none;
-}
-
-.cv-item-head {
+.cert-row {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.cert-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-decoration: none;
 }
 
-.cv-role {
-  font-weight: 700;
-}
-
-.cv-company {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-}
-
-.cv-list {
-  margin: 8px 0 0;
-  padding-left: 18px;
-  color: var(--text-primary);
-}
-
-.cv-list li {
-  margin: 6px 0;
-  line-height: 1.5;
-}
-
-@media (max-width: 860px) {
-  .cv-sections {
-    grid-template-columns: 1fr;
+/* Print-specific sizing: reduce overall scale */
+@media print {
+  @page {
+    size: A4;
+    margin: 8mm;
   }
-  .cv-meta {
-    text-align: left;
+
+  body {
+    font-size: 11.5px;
+    background: #fff !important;
   }
-  .cv-header {
-    grid-template-columns: 1fr;
+  .page-shell {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+  .resume-wrap {
+    max-width: none;
+  }
+
+  .card {
+    box-shadow: none !important;
+    padding: 10px 12px;
+    margin-top: 8px;
+    border-radius: 5x;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+  h2 {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  .avatar-wrap {
+    width: 110px;
+    height: 110px;
+  }
+  .social-icon {
+    width: 24px;
+    height: 24px;
   }
 }

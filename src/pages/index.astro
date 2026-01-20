@@ -20,6 +20,7 @@ import resume from "../content/resume.json";
     />
 
     <link rel="stylesheet" href="/styles.css" />
+    <!-- <link rel="stylesheet" href="/cv.css" /> -->
     <!-- icons.css is not needed if you're using Iconify; keep only if you still use it elsewhere -->
     <!-- <link rel="stylesheet" href="/icons.css" /> -->
 
@@ -209,6 +210,7 @@ import resume from "../content/resume.json";
               }
             </section>
           </div>
+          <!-- <div class="page-break"></div> -->
 
           <!-- Right pane (boxed cards) -->
           <div class="right-pane">
@@ -247,6 +249,22 @@ import resume from "../content/resume.json";
                         ))}
                       </div>
                     ) : null}
+                  </div>
+                ))
+              }
+            </section>
+            <section class="card">
+              <h2>Education</h2>           
+              {
+                resume.education?.map((edu) => (
+                  <div class="item">
+                    <div class="item-head">
+                      <strong>{edu.degree}</strong>
+                      <br />
+                      <span class="muted italic">
+                        {edu.institution} <strong>({edu.startDate} - {edu.endDate})</strong>
+                      </span>
+                    </div>
                   </div>
                 ))
               }

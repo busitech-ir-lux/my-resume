@@ -3,7 +3,7 @@ import { execSync, spawn } from "node:child_process";
 import fs from "node:fs";
 
 const PORT = 4173;
-const URL = `http://127.0.0.1:${PORT}/`;
+const URL = `http://127.0.0.1:${PORT}/cv`;
 const OUTPUT = "dist/resume.pdf";
 
 function sleep(ms) {
@@ -35,7 +35,7 @@ function startServer() {
 
   await page.goto(URL, { waitUntil: "networkidle" });
   await page.addStyleTag({
-    content: `.saide-rail { display: none !important; }`
+    content: `.saide-rail { display: none !important; }`,
   });
 
   // Optional: force LIGHT theme in the PDF
@@ -43,12 +43,14 @@ function startServer() {
   //   document.documentElement.setAttribute("data-theme", "light");
   //   localStorage.setItem("theme", "light");
   // });
+  await page.emulateMedia({ media: "print" });
 
   await page.pdf({
     path: OUTPUT,
-    format: "A3",
+    format: "A4",
     printBackground: true,
-    margin: { top: "1mm", right: "1mm", bottom: "1mm", left: "1mm" },
+    // margin: { top: "1mm", right: "1mm", bottom: "1mm", left: "1mm" },
+    scale: 1,
   });
 
   await browser.close();
