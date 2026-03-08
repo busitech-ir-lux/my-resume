@@ -355,3 +355,35 @@ h2 {
 .tag {
   display: none !important;
 }
+
+@media print {
+  .right-box,
+  .right-pane,
+  .card,
+  .cert-item,
+  .skill,
+  .item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .right-pane {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .card {
+    margin-top: 6px !important;
+    padding: 8px 10px !important;
+  }
+
+  .right-box ul {
+    margin: 4px 0 0 12px;
+    padding-left: 10px;
+  }
+
+  .right-box li {
+    margin-bottom: 2px;
+  }
+}

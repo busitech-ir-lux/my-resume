@@ -3,42 +3,66 @@
     {
       "name": "Troubleshooting",
       "level": 85,
-      "tags": ["IT Support", "Customer Service"]
+      "tags": [
+        "IT Support",
+        "Customer Service"
+      ]
     },
     {
       "name": "TCP/IP",
       "level": 70,
-      "tags": ["IT Support", "Customer Service"]
+      "tags": [
+        "IT Support",
+        "Customer Service"
+      ]
     },
     {
       "name": "Protocols",
       "level": 80,
-      "tags": ["IT Support", "Customer Service"]
+      "tags": [
+        "IT Support",
+        "Customer Service"
+      ]
     },
     {
       "name": "Active Directory",
       "level": 70,
-      "tags": ["IT Support", "Customer Service"]
+      "tags": [
+        "IT Support",
+        "Customer Service"
+      ]
     },
     {
       "name": "Networking Technologies",
       "level": 70,
-      "tags": ["IT Support", "Customer Service"]
+      "tags": [
+        "IT Support",
+        "Customer Service"
+      ]
     },
     {
       "name": "Helpdesk",
       "level": 85,
-      "tags": ["IT Support", "Customer Service"]
+      "tags": [
+        "IT Support",
+        "Customer Service"
+      ]
     },
     {
       "name": "Network Implementation",
       "level": 75,
-      "tags": ["IT Support", "Customer Service"]
+      "tags": [
+        "IT Support",
+        "Customer Service"
+      ]
     },
     {
       "name": "Azure",
       "level": 30,
-      "tags": ["IT Support", "Customer Service"]
+      "tags": [
+        "IT Support",
+        "Customer Service"
+      ]
     }
   ],
   "summary": "IT Support & Network Specialist with 5+ years of experience in IT operations, networking, and end-user support, including 4+ years in enterprise IT environments. Skilled in troubleshooting hardware, software, and connectivity issues, managing routers, switches, firewalls, and administering VMware environments (ESXi, vCenter, backups). Adept in Active Directory, with a strong focus on infrastructure reliability, customer support, and technical documentation.\n\n",
@@ -110,7 +134,6 @@
   "phone": "+352661199277",
   "location": "Belvaux, Luxembourg",
   "title": "Network Specialist",
-  "email": "info.busitech@proton.me",
   "languages": [
     {
       "name": "English",
@@ -135,20 +158,20 @@
   "image": "/uploads/profile.png",
   "certificates": [
     {
-      "title": "CompTIA Network+",
-      "issuer": "Rayancollege",
+      "title": "Network+",
+      "issuer": "Rayancollege - Iran",
       "year": "2018",
       "link": "https://drive.google.com/file/d/1TlHoATQ6MsdF3HJV5kywQE4WVT6hBpgB/view?usp=sharing"
     },
     {
-      "title": "Cisco Certified Network Associate (CCNA 200-125)",
-      "issuer": "Rayancollege",
+      "title": "CCNA 200-125",
+      "issuer": "Rayancollege - Iran",
       "year": "2018",
       "link": "https://drive.google.com/file/d/1TpHFXlAoZuB56ZWF-VMTJvD2gf-aHTKA/view?usp=sharing"
     },
     {
       "title": "CEH",
-      "issuer": "Maktabkhooneh",
+      "issuer": "Maktabkhooneh - Iran (online course)",
       "year": "2025",
       "link": "https://maktabkhooneh.org/certificates/MK-ONAP8S"
     },
@@ -165,5 +188,6 @@
       "trf": "25BE503415HAMM003A",
       "link": "https://ielts.org/verify"
     }
-  ]
+  ],
+  "email": "info.busitech@proton.me"
 }
