@@ -632,3 +632,16 @@ input:checked + .slider::before {
     display: none !important;
   }
 }
+/* Hide skill search and tags globally */
+.skill-search,
+.skill-tags,
+.tag {
+  display: none !important;
+}
+
+.two-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px; /* FIX: was too small */
+  align-items: start;
+}

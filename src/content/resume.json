@@ -46,7 +46,7 @@
     {
       "institution": "Payame Noor University - Iran",
       "degree": "Bachelor of Information Technology Engineering",
-      "startDate": "2011",
+      "startDate": "2010",
       "endDate": "2016"
     }
   ],
@@ -84,7 +84,7 @@
       ]
     }
   ],
-  "name": "Mahdi Hamidi",
+  "name": "Mahdi HAMIDI",
   "social": [
     {
       "label": "LinkedIn",
@@ -110,18 +110,19 @@
   "phone": "+352661199277",
   "location": "Belvaux, Luxembourg",
   "title": "Network Specialist",
+  "email": "info.busitech@proton.me",
   "languages": [
     {
       "name": "English",
-      "level": "Upper-Intermediate"
-    },
-    {
-      "name": "Persian",
-      "level": "Native"
+      "level": "Professional"
     },
     {
       "name": "French",
       "level": "Basic"
+    },
+    {
+      "name": "Persian",
+      "level": "Native"
     }
   ],
   "competencies": [
@@ -146,11 +147,23 @@
       "link": "https://drive.google.com/file/d/1TpHFXlAoZuB56ZWF-VMTJvD2gf-aHTKA/view?usp=sharing"
     },
     {
+      "title": "CEH",
+      "issuer": "Maktabkhooneh",
+      "year": "2025",
+      "link": "https://maktabkhooneh.org/certificates/MK-ONAP8S"
+    },
+    {
       "title": "Cybersecurity for everyone",
       "issuer": "Univerity of Maryland",
       "year": "2025",
       "link": "https://coursera.org/share/36d599579045d88a7c4249838d492f66"
+    },
+    {
+      "title": "IELTS Academic — Band 7.0 (C1)",
+      "issuer": "British Council",
+      "year": "2026",
+      "trf": "25BE503415HAMM003A",
+      "link": "https://ielts.org/verify"
     }
-  ],
-  "email": "info.busitech@proton.me"
+  ]
 }

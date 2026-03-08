@@ -30,7 +30,7 @@ import resume from "../content/resume.json";
         <section class="card header">
           <div class="header-left">
             <h1 class="name">{resume.name}</h1>
-            <div class="title muted">{resume.title}</div>
+            <div class="title muted-secondary">{resume.title}</div>
           </div>
 
           <div class="header-middle">
@@ -100,7 +100,7 @@ import resume from "../content/resume.json";
                       aria-label={s.label || s.icon}
                       title={s.label || s.icon}
                     >
-                      <iconify-icon icon={s.icon} width="14" height="14" />
+                      <iconify-icon icon={s.icon} width="20" height="20" />
                     </a>
                   ))}
                 </div>
@@ -111,7 +111,7 @@ import resume from "../content/resume.json";
 
         <!-- SUMMARY -->
         <section class="card">
-          <h2>Summary</h2>
+          <h2 class="subject">Summary</h2>
           <p class="body">{resume.summary}</p>
         </section>
 
@@ -120,7 +120,7 @@ import resume from "../content/resume.json";
           <!-- Left -->
           <div class="left-pane">
             <section class="card">
-              <h2>Experience</h2>
+              <h2 class="subject">Experience</h2>
 
               {
                 resume.experience?.map((exp) => (
@@ -142,7 +142,7 @@ import resume from "../content/resume.json";
               }
             </section>
             <section class="card">
-              <h2>Education</h2>           
+              <h2 class="subject">Education</h2>
               {
                 resume.education?.map((edu) => (
                   <div class="item card">
@@ -150,7 +150,10 @@ import resume from "../content/resume.json";
                       <strong>{edu.degree}</strong>
                       <br />
                       <span class="muted italic">
-                        {edu.institution} <strong>({edu.startDate} - {edu.endDate})</strong>
+                        {edu.institution}{" "}
+                        <strong>
+                          ({edu.startDate} - {edu.endDate})
+                        </strong>
                       </span>
                     </div>
                   </div>
@@ -162,7 +165,7 @@ import resume from "../content/resume.json";
           <!-- Right -->
           <div class="right-pane">
             <section class="card right-box">
-              <h2>Skills</h2>
+              <h2 class="subject">Skills</h2>
 
               {
                 resume.skills?.map((skill) => (
@@ -181,25 +184,9 @@ import resume from "../content/resume.json";
             </section>
 
             {
-              resume.languages?.length ? (
-                <section class="card right-box">
-                  <h2>Languages</h2>
-                  <ul class="list">
-                    {resume.languages.map((l) => (
-                      <li>
-                        <strong>{l.name}</strong>
-                        <span class="muted"> — {l.level}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ) : null
-            }
-
-            {
               resume.certificates?.length ? (
                 <section class="card right-box">
-                  <h2>Certificates</h2>
+                  <h2 class="subject">Certificates</h2>
                   <ul class="list">
                     {resume.certificates.map((c) => (
                       <li class="cert-item">
@@ -229,6 +216,21 @@ import resume from "../content/resume.json";
                             </a>
                           )}
                         </div>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null
+            }
+            {
+              resume.languages?.length ? (
+                <section class="card right-box">
+                  <h2 class="subject">Languages</h2>
+                  <ul class="list">
+                    {resume.languages.map((l) => (
+                      <li>
+                        <strong>{l.name}</strong>
+                        <span class="muted"> — {l.level}</span>
                       </li>
                     ))}
                   </ul>

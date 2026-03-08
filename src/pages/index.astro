@@ -167,48 +167,44 @@ import resume from "../content/resume.json";
                 ))
               }
             </section>
-            <section>
-              {/* Certificates box */}
+            {/* Education box */}
+            <div class="two-grid">
+              <section class="card">
+                <h2>Education</h2>
+                {
+                  resume.education?.map((edu) => (
+                    <div class="item">
+                      <div class="item-head">
+                        <strong>{edu.degree}</strong>
+                        <br />
+                        <span class="muted italic">
+                          {edu.institution}{" "}
+                          <strong>
+                            ({edu.startDate} - {edu.endDate})
+                          </strong>
+                        </span>
+                      </div>
+                    </div>
+                  ))
+                }
+              </section>
+              {/* Languages box */}
               {
-                resume.certificates?.length ? (
+                resume.languages?.length ? (
                   <section class="card right-box">
-                    <h2>Certificates</h2>
+                    <h2>Languages</h2>
                     <ul>
-                      {resume.certificates.map((c) => (
-                        <li class="cert-item">
-                          <div class="cert-row">
-                            <div>
-                              <strong>- {c.title}</strong>
-                              <br />
-                              <span class="muted">
-                                {c.issuer}
-                                {c.year ? `, ${c.year}` : ""}
-                              </span>
-                            </div>
-                            {c.link && (
-                              <a
-                                href={c.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="cert-icon"
-                                title="View certificate"
-                                aria-label="View certificate"
-                              >
-                                <iconify-icon
-                                  icon="material-symbols:visibility-outline"
-                                  width="18"
-                                  height="18"
-                                />
-                              </a>
-                            )}{" "}
-                          </div>
+                      {resume.languages.map((l) => (
+                        <li>
+                          <strong>{l.name}</strong>
+                          <span class="muted"> — {l.level}</span>
                         </li>
                       ))}
                     </ul>
                   </section>
                 ) : null
               }
-            </section>
+            </div>
           </div>
           <!-- <div class="page-break"></div> -->
 
@@ -218,13 +214,13 @@ import resume from "../content/resume.json";
             <section class="card right-box">
               <h2>Skills</h2>
 
-              <input
+              <!-- <input
                 id="skillSearch"
                 class="skill-search"
                 type="search"
                 placeholder="Search skills or tags..."
                 autocomplete="off"
-              />
+              /> -->
 
               {
                 resume.skills?.map((skill) => (
@@ -253,32 +249,44 @@ import resume from "../content/resume.json";
                 ))
               }
             </section>
-            <section class="card">
-              <h2>Education</h2>           
-              {
-                resume.education?.map((edu) => (
-                  <div class="item">
-                    <div class="item-head">
-                      <strong>{edu.degree}</strong>
-                      <br />
-                      <span class="muted italic">
-                        {edu.institution} <strong>({edu.startDate} - {edu.endDate})</strong>
-                      </span>
-                    </div>
-                  </div>
-                ))
-              }
-            </section>
-            {/* Languages box */}
+            {/* Certificates box */}
             {
-              resume.languages?.length ? (
+              resume.certificates?.length ? (
                 <section class="card right-box">
-                  <h2>Languages</h2>
+                  <h2>Certificates</h2>
                   <ul>
-                    {resume.languages.map((l) => (
-                      <li>
-                        <strong>{l.name}</strong>
-                        <span class="muted"> — {l.level}</span>
+                    {resume.certificates.map((c) => (
+                      <li class="cert-item">
+                        <div class="cert-row">
+                          <div>
+                            <strong>- {c.title}</strong>
+                            <br />
+                            <div class="cert-meta muted">
+                              <div>
+                                {c.issuer}
+                                {c.year ? `, ${c.year}` : ""}
+                              </div>
+
+                              {c.trf && <div class="trf">TFR: {c.trf}</div>}
+                            </div>
+                          </div>
+                          {c.link && (
+                            <a
+                              href={c.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="cert-icon"
+                              title="View certificate"
+                              aria-label="View certificate"
+                            >
+                              <iconify-icon
+                                icon="material-symbols:visibility-outline"
+                                width="18"
+                                height="18"
+                              />
+                            </a>
+                          )}{" "}
+                        </div>
                       </li>
                     ))}
                   </ul>
